@@ -4,6 +4,10 @@ const app = express();
 const config = require("./app.config.json");
 let mysqlConn = new mysql(config.host, config.id, config.pass, config.database);
 
+app.get("/", (req,res)=>{
+    res.send("hello?");
+});
+
 app.get("/test", async(req,res)=>{
     console.log(req);
     let name = "asd";
