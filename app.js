@@ -11,7 +11,6 @@ app.get("/", (req,res)=>{
 });
 
 app.get("/test", async(req,res)=>{
-    console.log(req);
     let name = "asd";
     let age = 1;
     let first = 10;
@@ -25,7 +24,15 @@ app.get("/test", async(req,res)=>{
 });
 
 app.post('/upload', async(req, res)=>{
-    console.log(req.body);
+    mysqlConn.query(`INSERT INTO 
+                    inspect_result(name, age, first, second, third, total)
+                    VALUES(
+                        '${req.body.name}', 
+                        '${req.body.age}', 
+                        '${req.body.first}', 
+                        '${req.body.second}', 
+                        '${req.body.third}', 
+                        '${req.body.total}')`);
     res.send('Hello World!')
 });
 app.listen(3000, () => console.log('Node.js app listening'));
