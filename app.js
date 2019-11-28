@@ -1,9 +1,11 @@
 const express = require('express');
+const bodyparser = require("body-parser");
 const mysql = require("./mysql");
 const app = express();
 const config = require("./app.config.json");
 let mysqlConn = new mysql(config.host, config.id, config.pass, config.database);
-
+app.use(bodyparser.json());
+app.use(bodyparser.urlencoded({ extended : false }));
 app.get("/", (req,res)=>{
     res.send("hello?");
 });
@@ -23,7 +25,7 @@ app.get("/test", async(req,res)=>{
 });
 
 app.post('/upload', async(req, res)=>{
-    console.log(req);
+    console.log(req.body);
     res.send('Hello World!')
 });
 app.listen(3000, () => console.log('Node.js app listening'));
