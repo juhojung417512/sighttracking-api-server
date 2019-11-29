@@ -33,6 +33,6 @@ app.post('/upload', async(req, res)=>{
                         '${req.body.second}', 
                         '${req.body.third}', 
                         '${req.body.total}')`);
-    res.send('Hello World!')
+    res.send('COMPLETE!! THIS POPUP WILL BE CLOSE!!');
 });
 app.listen(3000, () => console.log('Node.js app listening'));
