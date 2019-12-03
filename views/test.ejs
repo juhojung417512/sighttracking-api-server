@@ -1,0 +1,36 @@
+<link href="/style.css" rel="stylesheet" type="text/css" version="0.1">
+<div class="dropdown">
+    <button class="dropbtn">정렬</button>
+    <div class="dropdown-content">
+        <a href="?type=addedAt&order=ASC">날짜 오름차순</a>
+        <a href="?type=addedAt&order=DESC">날짜 내림차순</a>
+        <a href="?type=age&order=ASC">나이 오름차순</a>
+        <a href="?type=age&order=DESC">나이 내림차순</a>
+        <a href="?type=total&order=ASC">총 점수 오름차순</a>
+        <a href="?type=total&order=DESC">총 점수 내림차순</a>
+    </div>
+</div>
+<table>
+    <tr>
+        <th>id</th>
+        <th>이름</th>
+        <th>나이</th>
+        <th>1번 구간</th>
+        <th>2번 구간</th>
+        <th>3번 구간</th>
+        <th>총 점수</th>
+        <th>업로드 날짜</th>
+    </tr>
+    <% for(var i=0; i < data.length; i++) { %>
+        <tr>
+          <td><%= data[i].id %></td>
+          <td><%= data[i].name %></td>
+          <td><%= data[i].age %></td>
+          <td><%= data[i].first %></td>
+          <td><%= data[i].second %></td>
+          <td><%= data[i].third %></td>
+          <td><%= data[i].total %></td>
+          <td><%= data[i].addedAt %></td>
+        </tr>
+     <% } %>
+</table>

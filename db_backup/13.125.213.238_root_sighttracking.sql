@@ -7,6 +7,7 @@ CREATE TABLE `inspect_result` (
   `second` varchar(100) DEFAULT NULL,
   `third` varchar(100) DEFAULT NULL,
   `total` varchar(100) DEFAULT NULL,
+  `addedAt` datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
 

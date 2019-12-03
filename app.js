@@ -1,11 +1,27 @@
 const express = require('express');
 const bodyparser = require("body-parser");
 const mysql = require("./mysql");
+const fs = require("fs");
+const ejs = require("ejs");
 const app = express();
 const config = require("./app.config.json");
 let mysqlConn = new mysql(config.host, config.id, config.pass, config.database);
+
+app.use(express.static(__dirname + '/public'));
+app.set("views", __dirname +  "/views");
+app.set("view engine", "ejs");
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({ extended : false }));
+
+app.get("/status", async (req,res) => {
+    let sort_type = req.query.type;
+    let order_type = req.query.order;
+    let data = await mysqlConn.query(`SELECT * FROM inspect_result ORDER BY ${sort_type} ${order_type}`);
+    res.render("test",{
+        data : data
+    });
+});
+
 app.get("/", (req,res)=>{
     res.send("hello?");
 });
