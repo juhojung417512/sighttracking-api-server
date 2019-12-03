@@ -16,7 +16,10 @@ app.use(bodyparser.urlencoded({ extended : false }));
 app.get("/status", async (req,res) => {
     let sort_type = req.query.type;
     let order_type = req.query.order;
-    let data = await mysqlConn.query(`SELECT * FROM inspect_result ORDER BY ${sort_type} ${order_type}`);
+    let data = await mysqlConn.query(`SELECT * FROM inspect_result`);
+    if(sort_type !== undefined && sort_type !== null){
+        data = await mysqlConn.query(`SELECT * FROM inspect_result ORDER BY ${sort_type} ${order_type}`);
+    }
     res.render("test",{
         data : data
     });
