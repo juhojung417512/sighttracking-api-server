@@ -12,6 +12,16 @@ app.set("view engine", "ejs");
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({ extended : false }));
 
+app.post("/fcm_token", (req,res)=>{
+    console.log(req.body.fcm_token);
+    mysqlConn.query(`INSERT INTO 
+                    fcm_tokens(user_id, token)
+                    VALUES(
+                        '${req.body.user_id}', 
+                        '${req.body.fcm_token}')`);
+    res.send("Success");
+});
+
 app.get("/status", async (req,res) => {
     let sort_type = req.query.type;
     let order_type = req.query.order;

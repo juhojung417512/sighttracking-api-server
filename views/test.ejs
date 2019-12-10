@@ -52,7 +52,17 @@ th, td {
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {background-color: #444444;}
 </style>
-<!-- <link href="./style.css" rel="stylesheet" type="text/css" version="0.1"> -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+window.onload = function (){
+  window.fcmPush = function(token, user_id){
+    $.post("http://13.125.213.238/fcm_token",{
+      user_id : user_id,
+      fcm_token : token
+    },function(){ alert("success")});
+  }
+}
+</script>
 <div class="dropdown">
     <button class="dropbtn">정렬</button>
     <div class="dropdown-content">
