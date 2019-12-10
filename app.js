@@ -12,7 +12,7 @@ app.set("view engine", "ejs");
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({ extended : false }));
 
-app.post("/fcmToken", (req,res)=>{
+app.post("/fcmtoken", (req,res)=>{
     console.log(req.body.fcm_token);
     mysqlConn.query(`INSERT INTO 
                     fcm_tokens(user_id, token)
