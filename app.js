@@ -29,8 +29,8 @@ app.get("/testtest", async(req,res)=>{
     for(var row of inspect_result){
         avg += row.total;
     }
-    avg /= inspect_result.length;
-    let p1 = 0;
+    avg = parseFloat(avg / inspect_result.length);
+    let p1 = 0.0;
     for(var row of inspect_result){
         p1 += avg - row.total * avg - row.total;
     }
