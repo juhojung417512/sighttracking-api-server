@@ -23,7 +23,8 @@ app.post("/fcmtoken", (req,res)=>{
 });
 
 app.get("/testtest", async(req,res)=>{
-    let inspect_result = mysqlConn.query(`SELECT total FROM insepct_result`);
+    let inspect_result = await mysqlConn.query(`SELECT total FROM inspect_result`);
+    console.log(inspect_result);
     let avg = null;
     for(var row of inspect_result){
         avg += row.total;
