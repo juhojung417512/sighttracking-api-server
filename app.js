@@ -22,6 +22,23 @@ app.post("/fcmtoken", (req,res)=>{
     res.send("Success");
 });
 
+app.get("/testtest", async(req,res)=>{
+    let inspect_result = mysqlConn.query(`SELECT total FROM insepct_result`);
+    let avg = null;
+    for(var row of inspect_result){
+        avg += row.total;
+    }
+    avg /= inspect_result.length;
+    let p1 = 0;
+    for(var row of inspect_result){
+        p1 += avg - row.total * avg - row.total;
+    }
+    p1 /= inspect_result.length;
+    let result = Math.sqrt(p1);
+    
+    res.send(result);
+});
+
 app.get("/status", async (req,res) => {
     let sort_type = req.query.type;
     let order_type = req.query.order;
